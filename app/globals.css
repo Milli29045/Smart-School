@@ -24,3 +24,483 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+
+/* Global Styles */
+:root {
+  --primary: #123b72;
+  --secondary: #f4b942;
+  --light-blue: #eef5ff;
+  --dark: #102747;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 85px;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #26364b;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--secondary);
+  color: var(--dark);
+}
+
+/* Navbar */
+main > nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 18px 6% !important;
+  background: rgba(255, 255, 255, 0.92) !important;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 5px 25px rgba(18, 59, 114, 0.08) !important;
+  animation: slideDown 0.7s ease both;
+}
+
+main > nav > div:first-child {
+  letter-spacing: -1px;
+  transition: transform 0.3s ease;
+}
+
+main > nav > div:first-child:hover {
+  transform: scale(1.05);
+}
+
+main > nav a {
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+main > nav a:hover {
+  color: var(--secondary) !important;
+  transform: translateY(-2px);
+}
+
+main > nav > a:last-child {
+  background: linear-gradient(135deg, #174d91, #0b2d58) !important;
+  border-radius: 50px !important;
+  box-shadow: 0 7px 18px rgba(18, 59, 114, 0.2);
+}
+
+main > nav > a:last-child:hover {
+  background: var(--secondary) !important;
+  color: #102747 !important;
+  box-shadow: 0 10px 25px rgba(244, 185, 66, 0.3);
+}
+
+/* Hero Section */
+#home {
+  min-height: 620px !important;
+  position: relative;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+  animation: heroZoom 12s ease-in-out infinite alternate;
+}
+
+#home::before {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  right: 8%;
+  top: 12%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+
+#home::after {
+  content: "✦";
+  position: absolute;
+  right: 15%;
+  bottom: 15%;
+  font-size: 100px;
+  color: rgba(255, 255, 255, 0.2);
+  animation: rotateStar 15s linear infinite;
+}
+
+#home > div {
+  position: relative;
+  z-index: 2;
+  animation: fadeUp 1s ease both;
+}
+
+#home h1 {
+  text-shadow: 0 5px 25px rgba(0, 0, 0, 0.25);
+}
+
+#home a {
+  display: inline-block;
+  transition: all 0.35s ease;
+}
+
+#home a:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* School Highlights */
+main > section:nth-of-type(2) {
+  position: relative;
+  padding-top: 55px !important;
+  padding-bottom: 55px !important;
+  background: linear-gradient(135deg, #edf5ff, #ffffff, #fff8e9) !important;
+}
+
+main > section:nth-of-type(2) > div {
+  padding: 15px;
+  transition: transform 0.35s ease;
+}
+
+main > section:nth-of-type(2) > div:hover {
+  transform: translateY(-9px);
+}
+
+main > section:nth-of-type(2) h2 {
+  color: var(--primary) !important;
+  font-size: 45px;
+}
+
+/* Section Headings */
+section h2 {
+  letter-spacing: -1px;
+}
+
+section > div:first-child > p:first-child {
+  letter-spacing: 3px;
+}
+
+/* About Section */
+#about {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.94)),
+    url("https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1400")
+    center/cover !important;
+}
+
+#about > div {
+  animation: fadeUp 0.9s ease both;
+}
+
+#about > div::before {
+  content: "✦";
+  display: block;
+  color: var(--secondary);
+  font-size: 35px;
+  margin-bottom: 12px;
+}
+
+/* Academics Cards */
+#academics {
+  background: linear-gradient(180deg, #f3f7ff, #ffffff) !important;
+}
+
+#academics > div:last-child > div {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #e3ebf7;
+  border-radius: 22px !important;
+  padding: 35px !important;
+  box-shadow: 0 10px 30px rgba(18, 59, 114, 0.06);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+#academics > div:last-child > div:nth-child(1) {
+  background: linear-gradient(145deg, #ffffff, #eaf4ff) !important;
+}
+
+#academics > div:last-child > div:nth-child(2) {
+  background: linear-gradient(145deg, #ffffff, #fff5e2) !important;
+}
+
+#academics > div:last-child > div:nth-child(3) {
+  background: linear-gradient(145deg, #ffffff, #e9f8f3) !important;
+}
+
+#academics > div:last-child > div:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 40px rgba(18, 59, 114, 0.14);
+}
+
+#academics > div:last-child > div > div:first-child {
+  width: 75px;
+  height: 75px;
+  display: grid;
+  place-items: center;
+  border-radius: 20px;
+  background: white;
+  box-shadow: 0 6px 20px rgba(18, 59, 114, 0.08);
+  transition: transform 0.4s ease;
+}
+
+#academics > div:last-child > div:hover > div:first-child {
+  transform: rotate(-10deg) scale(1.12);
+}
+
+/* Classes */
+#classes {
+  background: #ffffff;
+}
+
+#classes > div:last-child > div {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px !important;
+  border: 1px solid #e4ebf5 !important;
+  background: linear-gradient(145deg, #ffffff, #f2f7ff);
+  box-shadow: 0 6px 20px rgba(18, 59, 114, 0.05);
+  transition: all 0.35s ease;
+}
+
+#classes > div:last-child > div:hover {
+  transform: translateY(-9px) scale(1.02);
+  background: linear-gradient(135deg, #174d91, #0b2d58) !important;
+  border-color: var(--secondary) !important;
+}
+
+#classes > div:last-child > div:hover h3 {
+  color: white !important;
+}
+
+#classes > div:last-child > div > div {
+  transition: transform 0.35s ease;
+}
+
+#classes > div:last-child > div:hover > div {
+  transform: scale(1.2);
+}
+
+/* Teachers */
+#teachers {
+  background: linear-gradient(180deg, #f0f6ff, #ffffff) !important;
+}
+
+#teachers > div:last-child > div {
+  overflow: hidden;
+  border-radius: 22px !important;
+  box-shadow: 0 10px 30px rgba(18, 59, 114, 0.08) !important;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+#teachers > div:last-child > div:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 40px rgba(18, 59, 114, 0.16) !important;
+}
+
+#teachers > div:last-child > div > div:first-child {
+  transition: transform 0.7s ease;
+}
+
+#teachers > div:last-child > div:hover > div:first-child {
+  transform: scale(1.08);
+}
+
+/* Admissions */
+#admissions {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(120deg, rgba(8, 38, 78, 0.96), rgba(23, 77, 145, 0.94)),
+    url("https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1600")
+    center/cover !important;
+}
+
+#admissions::before {
+  content: "";
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  top: -120px;
+  right: -80px;
+  animation: float 7s ease-in-out infinite;
+}
+
+#admissions form {
+  position: relative;
+  z-index: 1;
+  border-radius: 25px !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2) !important;
+  animation: fadeUp 0.9s ease both;
+}
+
+/* Form Fields */
+input,
+select,
+textarea {
+  border-radius: 10px !important;
+  transition: all 0.3s ease !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #174d91 !important;
+  box-shadow: 0 0 0 4px rgba(23, 77, 145, 0.1) !important;
+}
+
+form button {
+  border-radius: 12px !important;
+  transition: all 0.3s ease !important;
+}
+
+form button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(18, 59, 114, 0.18);
+}
+
+/* Contact */
+#contact {
+  background:
+    linear-gradient(rgba(242, 247, 255, 0.94), rgba(242, 247, 255, 0.94)),
+    url("https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?w=1400")
+    center/cover !important;
+}
+
+#contact > div:last-child > div:first-child > div {
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.8);
+  border-left: 4px solid var(--secondary);
+  box-shadow: 0 6px 20px rgba(18, 59, 114, 0.05);
+  transition: transform 0.3s ease;
+}
+
+#contact > div:last-child > div:first-child > div:hover {
+  transform: translateX(8px);
+}
+
+#contact form {
+  border-radius: 22px !important;
+  box-shadow: 0 15px 40px rgba(18, 59, 114, 0.09) !important;
+}
+
+/* Footer */
+footer {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #071e3c, #123b72) !important;
+}
+
+footer a {
+  transition: color 0.3s ease, padding 0.3s ease;
+}
+
+footer a:hover {
+  color: var(--secondary) !important;
+  padding-left: 4px;
+}
+
+/* Reusable Animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-22px);
+  }
+}
+
+@keyframes rotateStar {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes heroZoom {
+  from {
+    background-size: 100%;
+  }
+  to {
+    background-size: 110%;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  main > nav {
+    padding: 15px 5% !important;
+  }
+
+  #home {
+    min-height: 540px !important;
+    background-size: cover !important;
+  }
+
+  #home h1 {
+    font-size: 2.6rem;
+  }
+
+  #home::before {
+    width: 150px;
+    height: 150px;
+  }
+
+  #academics > div:last-child > div {
+    padding: 25px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #home h1 {
+    font-size: 2.1rem;
+  }
+
+  #home p {
+    font-size: 0.95rem;
+  }
+
+  #admissions form,
+  #contact form {
+    padding: 22px !important;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
