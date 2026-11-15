@@ -96,57 +96,88 @@ main > nav > a:last-child:hover {
 }
 
 /* Hero Section */
+
+/* Hero Section */
 #home {
-  min-height: 620px !important;
   position: relative;
+  min-height: 390px !important;
+  height: 390px;
   overflow: hidden;
   background-position: center;
   background-size: cover;
-  animation: heroZoom 12s ease-in-out infinite alternate;
+  animation: none;
 }
 
 #home::before {
   content: "";
   position: absolute;
-  width: 280px;
-  height: 280px;
+  width: 200px;
+  height: 200px;
   right: 8%;
   top: 12%;
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(11, 18, 32, 0.12);
   border-radius: 50%;
   animation: float 6s ease-in-out infinite;
+  pointer-events: none;
 }
 
 #home::after {
   content: "✦";
   position: absolute;
   right: 15%;
-  bottom: 15%;
-  font-size: 100px;
-  color: rgba(255, 255, 255, 0.2);
+  bottom: 10%;
+  font-size: 75px;
+  color: rgba(11, 18, 32, 0.12);
   animation: rotateStar 15s linear infinite;
+  pointer-events: none;
 }
 
-#home > div {
+/* Keep slideshow overlays in their correct positions */
+#home > div:not(:last-child) {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  animation: none;
+}
+
+/* Hero content */
+#home > div:last-child {
   position: relative;
   z-index: 2;
   animation: fadeUp 1s ease both;
 }
 
 #home h1 {
-  text-shadow: 0 5px 25px rgba(0, 0, 0, 0.25);
+  color: #0B1220 !important;
+  text-shadow: none;
+}
+
+#home p {
+  color: #0B1220;
 }
 
 #home a {
-  display: inline-block;
   transition: all 0.35s ease;
 }
 
 #home a:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+}
+#home h1 {
+  color: #FFFFFF !important;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
 }
 
+#home p {
+  color: #FFFFFF !important;
+}
+#home > div:last-child {
+  color: #FFFFFF;
+}
+
+#home > div:last-child span {
+  color: #FFFFFF;
+}
 /* School Highlights */
 main > section:nth-of-type(2) {
   position: relative;
@@ -178,27 +209,133 @@ section > div:first-child > p:first-child {
   letter-spacing: 3px;
 }
 
+
 /* About Section */
 #about {
   position: relative;
   overflow: hidden;
   background:
-    linear-gradient(rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.94)),
+    linear-gradient(
+      120deg,
+      rgba(232, 238, 246, 0.96),
+      rgba(255, 255, 255, 0.94),
+      rgba(219, 234, 254, 0.85)
+    ),
     url("https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1400")
-    center/cover !important;
+    center/cover;
 }
 
+/* Main About Container */
 #about > div {
+  position: relative;
+  z-index: 1;
+}
+
+/* Left Image Collage */
+#about > div > div:first-child {
+  position: relative;
   animation: fadeUp 0.9s ease both;
 }
 
-#about > div::before {
-  content: "✦";
-  display: block;
-  color: var(--secondary);
-  font-size: 35px;
-  margin-bottom: 12px;
+/* Main Image */
+#about > div > div:first-child > div:first-child {
+  border-radius: 35px;
+  box-shadow: 0 20px 45px rgba(18, 59, 114, 0.16);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
+
+#about > div > div:first-child > div:first-child:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 55px rgba(18, 59, 114, 0.22);
+}
+
+/* Small Overlapping Images */
+#about > div > div:first-child > div:nth-child(2),
+#about > div > div:first-child > div:nth-child(3) {
+  border: 6px solid white;
+  box-shadow: 0 12px 30px rgba(18, 59, 114, 0.18);
+  transition: transform 0.4s ease;
+}
+
+/* Years of Excellence Badge */
+#about > div > div:first-child > div:last-child {
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 10px 25px rgba(18, 59, 114, 0.12);
+}
+
+/* Right Side Content */
+#about > div > div:last-child {
+  animation: fadeUp 1s ease both;
+}
+
+/* Welcome Text */
+#about > div > div:last-child > div:first-child > p {
+  letter-spacing: 3px;
+  color: #3B82F6;
+}
+
+/* About Heading */
+#about h2 {
+  color: #123B72 !important;
+  font-size: 42px;
+  line-height: 1.2;
+  letter-spacing: -1.5px;
+}
+
+/* About Description */
+#about > div > div:last-child > div:first-child > p:not(:first-child) {
+  color: #26364b;
+  line-height: 1.9;
+}
+
+/* Feature Cards */
+#about > div > div:last-child > div:last-child > div > div {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #e5eaf2;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 22px rgba(18, 59, 114, 0.06);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+#about > div > div:last-child > div:last-child > div > div:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 16px 32px rgba(18, 59, 114, 0.13);
+}
+
+/* Feature Card Titles */
+#about h3 {
+  color: #123B72 !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #about {
+    padding-top: 45px;
+    padding-bottom: 55px;
+  }
+
+  #about h2 {
+    font-size: 34px;
+  }
+
+  #about > div > div:first-child {
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  #about h2 {
+    font-size: 20px;
+    font-family: 'Times New Roman', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  }
+
+  #about > div > div:first-child > div:first-child {
+    height: 300px;
+  }
+}
+
 
 /* Academics Cards */
 #academics {
@@ -381,10 +518,42 @@ form button:hover {
   transform: translateX(8px);
 }
 
+
+/* Contact Form */
 #contact form {
-  border-radius: 22px !important;
-  box-shadow: 0 15px 40px rgba(18, 59, 114, 0.09) !important;
+  width: 100%;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 24px !important;
+  border-radius: 20px !important;
+  box-shadow: 0 12px 30px rgba(18, 59, 114, 0.09) !important;
 }
+
+/* Smaller Form Fields */
+#contact form input,
+#contact form textarea {
+  padding: 10px 14px !important;
+  font-size: 14px;
+}
+
+/* Smaller Form Spacing */
+#contact form .mb-5 {
+  margin-bottom: 14px;
+}
+
+#contact form textarea {
+  min-height: 90px;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  #contact form {
+    max-width: 100%;
+    padding: 20px !important;
+  }
+}
+
 
 /* Footer */
 footer {

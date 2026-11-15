@@ -377,150 +377,178 @@ export default function Home() {
         )}
       </header>
 
-      <section
-        id="home"
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
-        className="relative flex min-h-[500px] items-center overflow-hidden bg-[#0B1220] pb-10 pt-12 sm:min-h-[540px] lg:min-h-[580px]"
-      >
-        {slides.map(([id, title], index) => (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            key={id}
-            src={u(id, 1600)}
-            alt={title}
-            loading={index < 2 ? "eager" : "lazy"}
-            onError={(event) => {
-              event.currentTarget.style.display = "none";
-            }}
-            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1400ms] ${
-              index === cur ? "opacity-100" : "opacity-0"
-            }`}
-          />
+   
+<section
+  id="home"
+  onMouseEnter={() => setPaused(true)}
+  onMouseLeave={() => setPaused(false)}
+  className="relative flex min-h-[200px] items-center overflow-hidden bg-[#0B1220] py-2 sm:min-h-[230px] lg:min-h-[250px]"
+>
+  {slides.map(([id, title], index) => (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      key={id}
+      src={u(id, 1600)}
+      alt={title}
+      loading={index < 2 ? "eager" : "lazy"}
+      onError={(event) => {
+        event.currentTarget.style.display = "none";
+      }}
+      className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1400ms] ${
+        index === cur ? "opacity-100" : "opacity-0"
+      }`}
+    />
+  ))}
+
+  <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220] via-[#0B1220]/60 to-[#0B1220]/30" />
+  <div className="absolute inset-0 bg-gradient-to-r from-[#0B1220]/80 to-transparent" />
+
+  <div className={`${wrap} relative w-full py-3`}>
+    <div className="max-w-2xl">
+      <p className="mb-2 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs font-medium text-white backdrop-blur">
+        <span className="h-2 w-2 rounded-full bg-[#60A5FA]" />
+        Admissions open for 2026–27
+      </p>
+
+      <h1 className={`${H} max-w-2xl text-2xl font-bold leading-tight tracking-tight text-white sm:text-3xl lg:text-4xl`}>
+        A happy place where every child loves to learn.
+      </h1>
+
+      <p className="mt-2 max-w-lg text-xs leading-5 text-white/80 sm:text-sm">
+        Strong academics, creative play and caring teachers, so your child grows in confidence every day.
+      </p>
+
+      <div className="mt-3 flex flex-wrap gap-2">
+        <a href="#admissions" className={btnPrimary}>Enroll your child</a>
+        <a href="#about" className={btnGhost}>Learn about us</a>
+      </div>
+    </div>
+
+    <div className="mt-4 flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
+      <div className="grid w-full max-w-[420px] grid-cols-3 divide-x divide-white/15 rounded-xl border border-white/15 bg-white/10 backdrop-blur-md">
+        {stats.map(([number, suffix, label]) => (
+          <div key={label} className="min-w-0 px-2 py-1.5 text-center sm:px-4">
+            <p className={`${H} text-base font-bold text-white sm:text-xl`}>
+              <Counter to={number} suffix={suffix} />
+            </p>
+            <p className="mt-0.5 text-[9px] leading-3 text-white/70 sm:text-xs">{label}</p>
+          </div>
         ))}
+      </div>
 
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220] via-[#0B1220]/60 to-[#0B1220]/30" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0B1220]/80 to-transparent" />
-
-        <div className={`${wrap} relative w-full py-8 sm:py-10 lg:py-12`}>
-          <div className="max-w-2xl">
-            <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur">
-              <span className="h-2 w-2 rounded-full bg-[#60A5FA]" />
-              Admissions open for 2026–27
-            </p>
-
-            <h1 className={`${H} max-w-2xl text-3xl font-bold leading-[1.2] tracking-tight text-white sm:text-4xl lg:text-5xl`}>
-              A happy place where every child loves to learn.
-            </h1>
-
-            <p className="mt-4 max-w-lg text-sm leading-7 text-white/80 sm:text-base">
-              Strong academics, creative play and caring teachers, so your child grows in confidence every day.
-            </p>
-
-            <div className="mt-6 flex flex-wrap gap-4">
-              <a href="#admissions" className={btnPrimary}>Enroll your child</a>
-              <a href="#about" className={btnGhost}>Learn about us</a>
-            </div>
-          </div>
-
-          <div className="mt-10 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-            <div className="grid w-full max-w-[420px] grid-cols-3 divide-x divide-white/15 rounded-2xl border border-white/15 bg-white/10 backdrop-blur-md">
-              {stats.map(([number, suffix, label]) => (
-                <div key={label} className="min-w-0 px-2 py-3 text-center sm:px-4">
-                  <p className={`${H} text-lg font-bold text-white sm:text-2xl`}>
-                    <Counter to={number} suffix={suffix} />
-                  </p>
-                  <p className="mt-0.5 text-[10px] leading-3 text-white/70 sm:text-xs">{label}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="flex max-w-full flex-wrap items-center gap-3 rounded-2xl border border-white/15 bg-white/10 py-2 pl-4 pr-2 text-white backdrop-blur-md">
-              <span className="min-w-[110px] text-sm font-medium">{slides[cur][1]}</span>
-              <div className="flex flex-wrap gap-1.5">
-                {slides.map(([id], index) => (
-                  <button
-                    key={id}
-                    type="button"
-                    onClick={() => setCur(index)}
-                    aria-label={`Go to slide ${index + 1}`}
-                    className={`h-1.5 rounded-full transition-all ${
-                      index === cur ? "w-5 bg-white" : "w-1.5 bg-white/50"
-                    }`}
-                  />
-                ))}
-              </div>
-              <button
-                type="button"
-                onClick={() => setCur((cur - 1 + total) % total)}
-                aria-label="Previous slide"
-                className="grid h-8 w-8 place-items-center rounded-full bg-white/15 transition hover:bg-white/30"
-              >
-                ‹
-              </button>
-              <button
-                type="button"
-                onClick={() => setCur((cur + 1) % total)}
-                aria-label="Next slide"
-                className="grid h-8 w-8 place-items-center rounded-full bg-white/15 transition hover:bg-white/30"
-              >
-                ›
-              </button>
-            </div>
-          </div>
+      <div className="flex max-w-full flex-wrap items-center gap-2 rounded-xl border border-white/15 bg-white/10 py-1.5 pl-3 pr-2 text-white backdrop-blur-md">
+        <span className="min-w-[100px] text-xs font-medium">{slides[cur][1]}</span>
+        <div className="flex flex-wrap gap-1.5">
+          {slides.map(([id], index) => (
+            <button
+              key={id}
+              type="button"
+              onClick={() => setCur(index)}
+              aria-label={`Go to slide ${index + 1}`}
+              className={`h-1.5 rounded-full transition-all ${
+                index === cur ? "w-5 bg-white" : "w-1.5 bg-white/50"
+              }`}
+            />
+          ))}
         </div>
-      </section>
+        <button
+          type="button"
+          onClick={() => setCur((cur - 1 + total) % total)}
+          aria-label="Previous slide"
+          className="grid h-7 w-7 place-items-center rounded-full bg-white/15 transition hover:bg-white/30"
+        >
+          ‹
+        </button>
+        <button
+          type="button"
+          onClick={() => setCur((cur + 1) % total)}
+          aria-label="Next slide"
+          className="grid h-7 w-7 place-items-center rounded-full bg-white/15 transition hover:bg-white/30"
+        >
+          ›
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       <Wave top="#0B1220" color="#E8EEF6" />
 
+     
       <section id="about" className="scroll-mt-28 bg-[#E8EEF6] py-16">
-        <div className={`${wrap} grid items-center gap-14 lg:grid-cols-2`}>
-          <Reveal className="relative pb-8">
+        <div className={`${wrap} grid items-center gap-12 lg:grid-cols-2`}>
+
+          {/* Left Side: School Image Collage */}
+          <Reveal className="relative mx-auto w-full max-w-xl pb-12 pr-10">
             <Photo
-              src={u("1577896851231-70ef18881754", 900)}
-              alt="Students working together"
-              className={`h-[400px] -rotate-[3deg] rounded-[2.5rem] transition-all duration-500 hover:rotate-0 ${frame}`}
+              src={u("1509062522246-3755977927d7", 1000)}
+              alt="Students learning in a classroom"
+              className={`h-[420px] w-full rounded-[2.5rem] ${frame}`}
             />
+
+            <Photo
+              src={u("1577896851231-70ef18881754", 700)}
+              alt="Students studying together"
+              className={`absolute -bottom-2 -right-2 h-44 w-48 rotate-3 rounded-[2rem] md:h-52 md:w-56 ${frame}`}
+            />
+
             <Photo
               src={u("1588072432836-e10032774350", 700)}
               alt="Teacher helping a student"
-              className={`absolute -bottom-2 right-0 h-40 w-40 rotate-[6deg] rounded-[2rem] transition-all duration-500 hover:rotate-0 hover:scale-105 md:h-48 md:w-48 ${frame}`}
+              className={`absolute -left-5 -top-5 h-36 w-36 -rotate-6 rounded-[2rem] md:h-40 md:w-40 ${frame}`}
             />
+
+            <div className="absolute bottom-2 left-5 rounded-2xl bg-white px-5 py-3 shadow-xl">
+              <p className={`${H} text-2xl font-bold text-[#123B72]`}>20+</p>
+              <p className="text-xs font-semibold text-[#5B6678]">
+                Years of excellence
+              </p>
+            </div>
           </Reveal>
 
+          {/* Right Side: About Content */}
           <div>
             <Reveal>
-              <p className="mb-5 text-sm font-bold uppercase tracking-[3px] text-[#3B82F6]">
+              <p className="mb-4 text-sm font-bold uppercase tracking-[3px] text-[#3B82F6]">
                 Welcome to Smart School
               </p>
-              <div className="grid items-center gap-6 md:grid-cols-2">
-                <div>
-                  <h2 className={`${H} text-3xl font-bold leading-tight text-[#0B1220] md:text-4xl`}>
-                    Education that makes a difference.
-                  </h2>
-                  <p className="mt-4 text-base leading-7 text-[#0B1220]">
-                    We believe every student can succeed. Our classrooms encourage curiosity,
-                    confidence, discipline and academic excellence, and every child is known by name.
-                  </p>
-                </div>
-                <Photo
-                  src={u("1509062522246-3755977927d7", 900)}
-                  alt="Students learning in a modern classroom"
-                  className={`h-64 w-full rounded-[2rem] ${frame}`}
-                />
-              </div>
+
+              <h2 className={`${H} text-3xl font-bold leading-tight text-[#123B72] md:text-5xl`}>
+                Education that makes a difference.
+              </h2>
+
+              <p className="mt-5 text-base leading-8 text-[#26364B]">
+                We believe every student can succeed. Our classrooms encourage
+                curiosity, confidence, discipline and academic excellence.
+                Our caring teachers help every child discover their talents,
+                develop new skills and build a brighter future.
+              </p>
+
+              <p className="mt-3 text-base leading-8 text-[#26364B]">
+                At Smart School, learning goes beyond textbooks. We create
+                opportunities for students to explore, create, collaborate
+                and grow with confidence.
+              </p>
             </Reveal>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               {values.map(([icon, title, description]) => (
-                <div key={title} className="rounded-2xl bg-white p-4 shadow-sm">
-                  <span className="text-2xl">{icon}</span>
-                  <h3 className={`${H} mt-2 font-bold text-[#0B1220]`}>{title}</h3>
-                  <p className="mt-1 text-sm leading-6 text-[#0B1220]">{description}</p>
-                </div>
+                <Reveal key={title}>
+                  <div className="h-full rounded-2xl border border-white bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                    <span className="text-3xl">{icon}</span>
+                    <h3 className={`${H} mt-3 font-bold text-[#123B72]`}>
+                      {title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-6 text-[#26364B]">
+                      {description}
+                    </p>
+                  </div>
+                </Reveal>
               ))}
             </div>
           </div>
+
         </div>
       </section>
 
@@ -753,72 +781,109 @@ export default function Home() {
 
       <Wave top="#0B1220" color="#E8EEF6" />
 
-      <section id="contact" className="scroll-mt-28 bg-[#E8EEF6] py-16">
-        <div className={wrap}>
-          <Head title="Get in touch." text="Have questions? We would love to hear from you." />
-          <div className="mt-12 grid gap-10 lg:grid-cols-2">
-            <Reveal className="space-y-5">
-              {contactInfo.map(([icon, title, detail], index) => (
-                <div
-                  key={title}
-                  className="flex items-center gap-4 rounded-3xl bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-x-1 hover:shadow-md"
-                >
-                  <span
-                    className="grid h-12 w-12 shrink-0 place-items-center rounded-full text-xl"
-                    style={{ background: pastel[index] }}
-                  >
-                    {icon}
-                  </span>
-                  <div>
-                    <h3 className={`${H} font-semibold text-[#0B1220]`}>{title}</h3>
-                    <p>{detail}</p>
-                  </div>
-                </div>
-              ))}
-            </Reveal>
+  
+<section id="contact" className="scroll-mt-28 bg-[#E8EEF6] py-16">
+  <div className={wrap}>
+    <Head
+      title="Get in touch."
+      text="Have questions? We would love to hear from you."
+    />
 
-            <Reveal delay={150}>
-              {messaged ? (
-                <div className="modal-pop grid h-full place-items-center rounded-[2.5rem] bg-white p-10 text-center shadow-md">
-                  <div>
-                    <div className="text-5xl">💌</div>
-                    <h3 className={`${H} mt-3 text-2xl font-semibold text-[#0B1220]`}>Message sent</h3>
-                    <p className="mt-2">Thank you. We will reply by email.</p>
-                    <button type="button" onClick={() => setMessaged(false)} className={btnSoft}>
-                      Send another message
-                    </button>
-                  </div>
-                </div>
-              ) : (
-                <form
-                  onSubmit={(event) => {
-                    event.preventDefault();
-                    setMessaged(true);
-                  }}
-                  className="rounded-[2.5rem] bg-white p-8 shadow-md"
-                >
-                  <h3 className={`${H} mb-6 text-2xl font-semibold text-[#0B1220]`}>Send us a message</h3>
-                  {[
-                    ["Your name", "text"],
-                    ["Your email", "email"],
-                    ["Subject", "text"],
-                  ].map(([label, type]) => (
-                    <div key={label} className="mb-5">
-                      <label className="mb-2 block font-bold text-[#0B1220]">{label}</label>
-                      <input type={type} required className={input} />
-                    </div>
-                  ))}
-                  <div className="mb-6">
-                    <label className="mb-2 block font-bold text-[#0B1220]">Message</label>
-                    <textarea rows={4} required className={input} />
-                  </div>
-                  <button type="submit" className={`${btnPrimary} w-full`}>Send message</button>
-                </form>
-              )}
-            </Reveal>
+    <div className="mt-12 grid items-stretch gap-8 lg:grid-cols-2">
+
+      {/* Contact Information */}
+      <Reveal className="flex flex-col justify-between gap-4">
+        {contactInfo.map(([icon, title, detail], index) => (
+          <div
+            key={title}
+            className="flex items-center gap-4 rounded-3xl bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-x-1 hover:shadow-md"
+          >
+            <span
+              className="grid h-12 w-12 shrink-0 place-items-center rounded-full text-xl"
+              style={{ background: pastel[index] }}
+            >
+              {icon}
+            </span>
+            <div>
+              <h3 className={`${H} font-semibold text-[#0B1220]`}>
+                {title}
+              </h3>
+              <p>{detail}</p>
+            </div>
           </div>
-        </div>
-      </section>
+        ))}
+      </Reveal>
+
+      {/* Compact Contact Form */}
+      <Reveal delay={150}>
+        {messaged ? (
+          <div className="modal-pop grid h-full min-h-[400px] place-items-center rounded-[2rem] bg-white p-8 text-center shadow-md">
+            <div>
+              <div className="text-5xl">💌</div>
+              <h3 className={`${H} mt-3 text-2xl font-semibold text-[#0B1220]`}>
+                Message sent
+              </h3>
+              <p className="mt-2">Thank you. We will reply by email.</p>
+              <button
+                type="button"
+                onClick={() => setMessaged(false)}
+                className={btnSoft}
+              >
+                Send another message
+              </button>
+            </div>
+          </div>
+        ) : (
+          <form
+            onSubmit={(event) => {
+              event.preventDefault();
+              setMessaged(true);
+            }}
+            className="h-full rounded-[2rem] bg-white p-6 shadow-md md:p-7"
+          >
+            <h3 className={`${H} mb-5 text-xl font-semibold text-[#0B1220]`}>
+              Send us a message
+            </h3>
+
+            {[
+              ["Your name", "text"],
+              ["Your email", "email"],
+              ["Subject", "text"],
+            ].map(([label, type]) => (
+              <div key={label} className="mb-3">
+                <label className="mb-1.5 block text-sm font-bold text-[#0B1220]">
+                  {label}
+                </label>
+                <input
+                  type={type}
+                  required
+                  className={`${input} py-2.5`}
+                />
+              </div>
+            ))}
+
+            <div className="mb-4">
+              <label className="mb-1.5 block text-sm font-bold text-[#0B1220]">
+                Message
+              </label>
+              <textarea
+                rows={3}
+                required
+                className={`${input} py-2.5`}
+              />
+            </div>
+
+            <button type="submit" className={`${btnPrimary} w-full py-3`}>
+              Send message
+            </button>
+          </form>
+        )}
+      </Reveal>
+
+    </div>
+  </div>
+</section>
+
 
       <Wave top="#E8EEF6" color="#0B1220" />
 
