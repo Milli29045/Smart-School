@@ -841,12 +841,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
+      {/* Footer (Fixed Prerender Error by using static year) */}
       <footer className="bg-[#0B1220] py-6 sm:py-8 text-center text-xs sm:text-sm text-white/70">
         <div className={wrap}>
-          <p>© {new Date().getFullYear()} Smart School. All rights reserved.</p>
+          <p>© 2026 Smart School. All rights reserved.</p>
         </div>
       </footer>
     </main>
   );
-}
+}g
