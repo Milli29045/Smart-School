@@ -49,7 +49,7 @@ const values = [
 const programs = [
   ["🌱", "Primary", "1503454537195-1dcabb73ffb9", "Reading, writing, numbers and plenty of hands-on creative work to build strong foundations."],
   ["🧪", "Middle", "1532094349884-543bc11b234d", "Science labs, group projects and discussion that teach students to think and solve problems."],
-  ["🎓", "Secondary", "1523050854058-8df90110c9f1", "Exam preparation, career guidance and the confidence to move on to higher education."],
+  ["🎓", "Secondary", "1509062522246-3755977927d7", "Exam preparation, career guidance and the confidence to move on to higher education."],
 ];
 
 const facilities = [
@@ -95,18 +95,18 @@ const contactInfo = [
   ["🕒", "School hours", "Monday – Friday, 8:00 AM – 2:00 PM"],
 ];
 
-const wrap = "mx-auto max-w-6xl px-6";
-const frame = "border-[6px] border-white shadow-[0_14px_34px_rgba(11,18,32,0.16)]";
+const wrap = "mx-auto max-w-6xl px-4 sm:px-6";
+const frame = "border-[4px] sm:border-[6px] border-white shadow-[0_14px_34px_rgba(11,18,32,0.16)]";
 const cardShadow = "shadow-[0_10px_30px_rgba(11,18,32,0.06)]";
 
 const input =
-  "w-full rounded-2xl border-2 border-[#CBD5E1] bg-white px-4 py-3 text-[#0B1220] outline-none transition-all duration-300 focus:border-[#3B82F6] focus:shadow-[0_4px_20px_rgba(59,130,246,0.15)] focus:ring-4 focus:ring-[#DBEAFE]";
+  "w-full rounded-2xl border-2 border-[#CBD5E1] bg-white px-4 py-3 text-sm sm:text-base text-[#0B1220] outline-none transition-all duration-300 focus:border-[#3B82F6] focus:shadow-[0_4px_20px_rgba(59,130,246,0.15)] focus:ring-4 focus:ring-[#DBEAFE]";
 
 const btnPrimary =
-  "inline-flex items-center justify-center rounded-full bg-[#3B82F6] px-8 py-3.5 text-center font-bold text-white shadow-[0_5px_0_#1D4ED8] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#2563EB] hover:shadow-[0_7px_0_#1D4ED8] active:translate-y-[4px] active:shadow-none focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-white";
+  "inline-flex items-center justify-center rounded-full bg-[#3B82F6] px-6 sm:px-8 py-3.5 text-center text-sm sm:text-base font-bold text-white shadow-[0_5px_0_#1D4ED8] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#2563EB] hover:shadow-[0_7px_0_#1D4ED8] active:translate-y-[4px] active:shadow-none focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-white";
 
 const btnGhost =
-  "inline-flex items-center justify-center rounded-full border-2 border-white/30 bg-white/10 px-8 py-3.5 text-center font-bold text-white backdrop-blur transition-all duration-200 hover:bg-white/20 active:translate-y-[4px] focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-white";
+  "inline-flex items-center justify-center rounded-full border-2 border-white/30 bg-white/10 px-6 sm:px-8 py-3.5 text-center text-sm sm:text-base font-bold text-white backdrop-blur transition-all duration-200 hover:bg-white/20 active:translate-y-[4px] focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-white";
 
 const btnSoft =
   "mt-6 rounded-full bg-[#E8EEF6] px-6 py-2.5 text-sm font-bold text-[#0B1220] transition hover:bg-[#DBEAFE]";
@@ -210,7 +210,8 @@ function Photo({
         alt={alt}
         loading="lazy"
         onError={(event) => {
-          event.currentTarget.style.display = "none";
+          event.currentTarget.onerror = null;
+          event.currentTarget.src = u("1523240795612-9a054b0db644", 800);
         }}
         className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
       />
@@ -224,7 +225,7 @@ function Wave({ top, color }: { top: string; color: string }) {
       <svg
         viewBox="0 0 1440 80"
         preserveAspectRatio="none"
-        className="block h-10 w-full md:h-16"
+        className="block h-8 w-full sm:h-12 md:h-16"
       >
         <path
           d="M0,40 C240,95 480,-10 720,40 C960,90 1200,-5 1440,40 L1440,80 L0,80 Z"
@@ -249,19 +250,19 @@ function Head({
   return (
     <Reveal>
       {tag && (
-        <span className="text-sm font-bold uppercase tracking-wider text-[#3B82F6]">
+        <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#3B82F6]">
           {tag}
         </span>
       )}
       <h2
-        className={`${H} ${tag ? "mt-2" : ""} max-w-2xl text-4xl font-bold leading-tight md:text-5xl ${
+        className={`${H} ${tag ? "mt-2" : ""} max-w-2xl text-3xl sm:text-4xl font-bold leading-tight md:text-5xl ${
           light ? "text-white" : "text-[#0B1220]"
         }`}
       >
         {title}
       </h2>
       {text && (
-        <p className={`mt-4 max-w-xl text-lg ${light ? "text-[#CBD5E1]" : ""}`}>
+        <p className={`mt-3 sm:mt-4 max-w-xl text-base sm:text-lg ${light ? "text-[#CBD5E1]" : "text-[#475569]"}`}>
           {text}
         </p>
       )}
@@ -315,16 +316,17 @@ export default function Home() {
         }
       `}</style>
 
-      <header className="sticky top-3 z-50 px-4 pt-2">
+      {/* Header */}
+      <header className="sticky top-2 sm:top-3 z-50 px-3 sm:px-4 pt-2">
         <nav
-          className={`mx-auto flex max-w-6xl items-center justify-between rounded-full px-5 py-3 transition-all duration-300 ${
+          className={`mx-auto flex max-w-6xl items-center justify-between rounded-full px-4 sm:px-5 py-2.5 sm:py-3 transition-all duration-300 ${
             scrolled
               ? "bg-white/95 shadow-[0_12px_32px_rgba(11,18,32,0.14)] backdrop-blur-md"
-              : "bg-white/80 shadow-[0_6px_20px_rgba(11,18,32,0.08)] backdrop-blur"
+              : "bg-white/85 shadow-[0_6px_20px_rgba(11,18,32,0.08)] backdrop-blur"
           }`}
         >
-          <a href="#home" className={`${H} group flex items-center gap-2.5 text-2xl font-bold text-[#0B1220]`}>
-            <span className="grid h-10 w-10 place-items-center rounded-full bg-[#DBEAFE] text-xl transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110">
+          <a href="#home" className={`${H} group flex items-center gap-2 text-xl sm:text-2xl font-bold text-[#0B1220]`}>
+            <span className="grid h-8 w-8 sm:h-10 sm:w-10 place-items-center rounded-full bg-[#DBEAFE] text-lg sm:text-xl transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110">
               🎒
             </span>
             Smart School
@@ -345,7 +347,7 @@ export default function Home() {
           <div className="flex items-center gap-2">
             <a
               href="#admissions"
-              className="rounded-full bg-[#0B1220] px-5 py-2.5 text-sm font-bold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#3B82F6] hover:shadow-md"
+              className="rounded-full bg-[#0B1220] px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-bold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#3B82F6] hover:shadow-md"
             >
               Apply now
             </a>
@@ -354,7 +356,7 @@ export default function Home() {
               onClick={() => setMenu((open) => !open)}
               aria-label="Toggle menu"
               aria-expanded={menu}
-              className="rounded-full bg-[#E8EEF6] px-3.5 py-2 text-[#0B1220] transition active:scale-95 lg:hidden"
+              className="rounded-full bg-[#E8EEF6] px-3 py-2 text-sm text-[#0B1220] transition active:scale-95 lg:hidden"
             >
               {menu ? "✕" : "☰"}
             </button>
@@ -368,7 +370,7 @@ export default function Home() {
                 key={href}
                 href={href}
                 onClick={() => setMenu(false)}
-                className="rounded-2xl px-4 py-3 font-semibold transition hover:bg-[#DBEAFE] hover:text-[#0B1220]"
+                className="rounded-2xl px-4 py-3 text-sm font-semibold transition hover:bg-[#DBEAFE] hover:text-[#0B1220]"
               >
                 {label}
               </a>
@@ -377,206 +379,185 @@ export default function Home() {
         )}
       </header>
 
-   
-<section
-  id="home"
-  onMouseEnter={() => setPaused(true)}
-  onMouseLeave={() => setPaused(false)}
-  className="relative flex min-h-[200px] items-center overflow-hidden bg-[#0B1220] py-2 sm:min-h-[230px] lg:min-h-[250px]"
->
-  {slides.map(([id, title], index) => (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      key={id}
-      src={u(id, 1600)}
-      alt={title}
-      loading={index < 2 ? "eager" : "lazy"}
-      onError={(event) => {
-        event.currentTarget.style.display = "none";
-      }}
-      className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1400ms] ${
-        index === cur ? "opacity-100" : "opacity-0"
-      }`}
-    />
-  ))}
-
-  <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220] via-[#0B1220]/60 to-[#0B1220]/30" />
-  <div className="absolute inset-0 bg-gradient-to-r from-[#0B1220]/80 to-transparent" />
-
-  <div className={`${wrap} relative w-full py-3`}>
-    <div className="max-w-2xl">
-      <p className="mb-2 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs font-medium text-white backdrop-blur">
-        <span className="h-2 w-2 rounded-full bg-[#60A5FA]" />
-        Admissions open for 2026–27
-      </p>
-
-      <h1 className={`${H} max-w-2xl text-2xl font-bold leading-tight tracking-tight text-white sm:text-3xl lg:text-4xl`}>
-        A happy place where every child loves to learn.
-      </h1>
-
-      <p className="mt-2 max-w-lg text-xs leading-5 text-white/80 sm:text-sm">
-        Strong academics, creative play and caring teachers, so your child grows in confidence every day.
-      </p>
-
-      <div className="mt-3 flex flex-wrap gap-2">
-        <a href="#admissions" className={btnPrimary}>Enroll your child</a>
-        <a href="#about" className={btnGhost}>Learn about us</a>
-      </div>
-    </div>
-
-    <div className="mt-4 flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
-      <div className="grid w-full max-w-[420px] grid-cols-3 divide-x divide-white/15 rounded-xl border border-white/15 bg-white/10 backdrop-blur-md">
-        {stats.map(([number, suffix, label]) => (
-          <div key={label} className="min-w-0 px-2 py-1.5 text-center sm:px-4">
-            <p className={`${H} text-base font-bold text-white sm:text-xl`}>
-              <Counter to={number} suffix={suffix} />
-            </p>
-            <p className="mt-0.5 text-[9px] leading-3 text-white/70 sm:text-xs">{label}</p>
-          </div>
+      {/* Hero Section */}
+      <section
+        id="home"
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+        className="relative flex min-h-[420px] sm:min-h-[480px] lg:min-h-[520px] items-center overflow-hidden bg-[#0B1220] py-10"
+      >
+        {slides.map(([id, title], index) => (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            key={id}
+            src={u(id, 1600)}
+            alt={title}
+            loading={index < 2 ? "eager" : "lazy"}
+            onError={(event) => {
+              event.currentTarget.style.display = "none";
+            }}
+            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1400ms] ${
+              index === cur ? "opacity-100" : "opacity-0"
+            }`}
+          />
         ))}
-      </div>
 
-      <div className="flex max-w-full flex-wrap items-center gap-2 rounded-xl border border-white/15 bg-white/10 py-1.5 pl-3 pr-2 text-white backdrop-blur-md">
-        <span className="min-w-[100px] text-xs font-medium">{slides[cur][1]}</span>
-        <div className="flex flex-wrap gap-1.5">
-          {slides.map(([id], index) => (
-            <button
-              key={id}
-              type="button"
-              onClick={() => setCur(index)}
-              aria-label={`Go to slide ${index + 1}`}
-              className={`h-1.5 rounded-full transition-all ${
-                index === cur ? "w-5 bg-white" : "w-1.5 bg-white/50"
-              }`}
-            />
-          ))}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0B1220] via-[#0B1220]/60 to-[#0B1220]/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0B1220]/90 via-[#0B1220]/60 to-transparent" />
+
+        <div className={`${wrap} relative w-full py-4`}>
+          <div className="max-w-2xl">
+            <p className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs font-medium text-white backdrop-blur">
+              <span className="h-2 w-2 rounded-full bg-[#60A5FA]" />
+              Admissions open for 2026–27
+            </p>
+
+            <h1 className={`${H} max-w-2xl text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-white`}>
+              A happy place where every child loves to learn.
+            </h1>
+
+            <p className="mt-3 max-w-lg text-sm sm:text-base leading-relaxed text-white/80">
+              Strong academics, creative play and caring teachers, so your child grows in confidence every day.
+            </p>
+
+            <div className="mt-5 flex flex-wrap gap-3">
+              <a href="#admissions" className={btnPrimary}>Enroll your child</a>
+              <a href="#about" className={btnGhost}>Learn about us</a>
+            </div>
+          </div>
+
+          <div className="mt-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+            <div className="grid w-full max-w-[420px] grid-cols-3 divide-x divide-white/15 rounded-2xl border border-white/15 bg-white/10 backdrop-blur-md">
+              {stats.map(([number, suffix, label]) => (
+                <div key={label} className="min-w-0 px-2 py-3 text-center sm:px-4">
+                  <p className={`${H} text-lg sm:text-xl font-bold text-white`}>
+                    <Counter to={number} suffix={suffix} />
+                  </p>
+                  <p className="mt-0.5 text-[10px] sm:text-xs text-white/70">{label}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex max-w-full flex-wrap items-center gap-2 rounded-2xl border border-white/15 bg-white/10 py-2 pl-4 pr-2 text-white backdrop-blur-md">
+              <span className="min-w-[100px] text-xs sm:text-sm font-medium">{slides[cur][1]}</span>
+              <div className="flex flex-wrap gap-1.5">
+                {slides.map(([id], index) => (
+                  <button
+                    key={id}
+                    type="button"
+                    onClick={() => setCur(index)}
+                    aria-label={`Go to slide ${index + 1}`}
+                    className={`h-1.5 rounded-full transition-all ${
+                      index === cur ? "w-5 bg-white" : "w-1.5 bg-white/50"
+                    }`}
+                  />
+                ))}
+              </div>
+              <button
+                type="button"
+                onClick={() => setCur((cur - 1 + total) % total)}
+                aria-label="Previous slide"
+                className="grid h-7 w-7 place-items-center rounded-full bg-white/15 transition hover:bg-white/30"
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                onClick={() => setCur((cur + 1) % total)}
+                aria-label="Next slide"
+                className="grid h-7 w-7 place-items-center rounded-full bg-white/15 transition hover:bg-white/30"
+              >
+                ›
+              </button>
+            </div>
+          </div>
         </div>
-        <button
-          type="button"
-          onClick={() => setCur((cur - 1 + total) % total)}
-          aria-label="Previous slide"
-          className="grid h-7 w-7 place-items-center rounded-full bg-white/15 transition hover:bg-white/30"
-        >
-          ‹
-        </button>
-        <button
-          type="button"
-          onClick={() => setCur((cur + 1) % total)}
-          aria-label="Next slide"
-          className="grid h-7 w-7 place-items-center rounded-full bg-white/15 transition hover:bg-white/30"
-        >
-          ›
-        </button>
-      </div>
-    </div>
-  </div>
-</section>
-
+      </section>
 
       <Wave top="#0B1220" color="#E8EEF6" />
 
-     
-      <section id="about" className="scroll-mt-28 bg-[#E8EEF6] py-16">
-        <div className={`${wrap} grid items-center gap-12 lg:grid-cols-2`}>
-
-          {/* Left Side: School Image Collage */}
-          <Reveal className="relative mx-auto w-full max-w-xl pb-12 pr-10">
+      {/* About Section */}
+      <section id="about" className="scroll-mt-28 bg-[#E8EEF6] py-12 sm:py-16">
+        <div className={`${wrap} grid items-center gap-8 sm:gap-12 lg:grid-cols-2`}>
+          <Reveal className="relative mx-auto w-full max-w-xl pb-10 pr-6 sm:pb-12 sm:pr-10">
             <Photo
               src={u("1509062522246-3755977927d7", 1000)}
               alt="Students learning in a classroom"
-              className={`h-[420px] w-full rounded-[2.5rem] ${frame}`}
+              className={`h-[320px] sm:h-[420px] w-full rounded-[2rem] sm:rounded-[2.5rem] ${frame}`}
             />
-
             <Photo
               src={u("1577896851231-70ef18881754", 700)}
               alt="Students studying together"
-              className={`absolute -bottom-2 -right-2 h-44 w-48 rotate-3 rounded-[2rem] md:h-52 md:w-56 ${frame}`}
+              className={`absolute -bottom-2 -right-2 h-36 w-40 sm:h-52 sm:w-56 rotate-3 rounded-2xl sm:rounded-[2rem] ${frame}`}
             />
-
             <Photo
               src={u("1588072432836-e10032774350", 700)}
               alt="Teacher helping a student"
-              className={`absolute -left-5 -top-5 h-36 w-36 -rotate-6 rounded-[2rem] md:h-40 md:w-40 ${frame}`}
+              className={`absolute -left-3 -top-3 sm:-left-5 sm:-top-5 h-28 w-28 sm:h-40 sm:w-40 -rotate-6 rounded-2xl sm:rounded-[2rem] ${frame}`}
             />
-
-            <div className="absolute bottom-2 left-5 rounded-2xl bg-white px-5 py-3 shadow-xl">
-              <p className={`${H} text-2xl font-bold text-[#123B72]`}>20+</p>
-              <p className="text-xs font-semibold text-[#5B6678]">
-                Years of excellence
-              </p>
+            <div className="absolute bottom-2 left-4 sm:left-5 rounded-2xl bg-white px-4 sm:px-5 py-2.5 sm:py-3 shadow-xl">
+              <p className={`${H} text-xl sm:text-2xl font-bold text-[#123B72]`}>20+</p>
+              <p className="text-[10px] sm:text-xs font-semibold text-[#5B6678]">Years of excellence</p>
             </div>
           </Reveal>
 
-          {/* Right Side: About Content */}
           <div>
             <Reveal>
-              <p className="mb-4 text-sm font-bold uppercase tracking-[3px] text-[#3B82F6]">
+              <p className="mb-3 text-xs sm:text-sm font-bold uppercase tracking-[3px] text-[#3B82F6]">
                 Welcome to Smart School
               </p>
-
-              <h2 className={`${H} text-3xl font-bold leading-tight text-[#123B72] md:text-5xl`}>
+              <h2 className={`${H} text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-[#123B72]`}>
                 Education that makes a difference.
               </h2>
-
-              <p className="mt-5 text-base leading-8 text-[#26364B]">
-                We believe every student can succeed. Our classrooms encourage
-                curiosity, confidence, discipline and academic excellence.
-                Our caring teachers help every child discover their talents,
-                develop new skills and build a brighter future.
+              <p className="mt-4 sm:mt-5 text-sm sm:text-base leading-7 sm:leading-8 text-[#26364B]">
+                We believe every student can succeed. Our classrooms encourage curiosity, confidence, discipline and academic excellence. Our caring teachers help every child discover their talents, develop new skills and build a brighter future.
               </p>
-
-              <p className="mt-3 text-base leading-8 text-[#26364B]">
-                At Smart School, learning goes beyond textbooks. We create
-                opportunities for students to explore, create, collaborate
-                and grow with confidence.
+              <p className="mt-3 text-sm sm:text-base leading-7 sm:leading-8 text-[#26364B]">
+                At Smart School, learning goes beyond textbooks. We create opportunities for students to explore, create, collaborate and grow with confidence.
               </p>
             </Reveal>
 
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            <div className="mt-6 sm:mt-8 grid gap-4 sm:grid-cols-2">
               {values.map(([icon, title, description]) => (
                 <Reveal key={title}>
-                  <div className="h-full rounded-2xl border border-white bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-                    <span className="text-3xl">{icon}</span>
-                    <h3 className={`${H} mt-3 font-bold text-[#123B72]`}>
-                      {title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-6 text-[#26364B]">
-                      {description}
-                    </p>
+                  <div className="h-full rounded-2xl border border-white bg-white p-4 sm:p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                    <span className="text-2xl sm:text-3xl">{icon}</span>
+                    <h3 className={`${H} mt-2 sm:mt-3 text-base sm:text-lg font-bold text-[#123B72]`}>{title}</h3>
+                    <p className="mt-1.5 sm:mt-2 text-xs sm:text-sm leading-6 text-[#26364B]">{description}</p>
                   </div>
                 </Reveal>
               ))}
             </div>
           </div>
-
         </div>
       </section>
 
       <Wave top="#E8EEF6" color="#F8FAFC" />
 
-      <section id="academics" className="scroll-mt-28 bg-[#F8FAFC] py-16">
+      {/* Academics Section */}
+      <section id="academics" className="scroll-mt-28 bg-[#F8FAFC] py-12 sm:py-16">
         <div className={wrap}>
           <Head
             tag="Curriculum"
             title="Quality education for every stage."
             text="Programs designed to help every student grow, from first lessons to board exams."
           />
-          <div className="mt-12 grid gap-8 md:grid-cols-3">
+          <div className="mt-8 sm:mt-12 grid gap-6 sm:gap-8 md:grid-cols-3">
             {programs.map(([icon, title, id, description], index) => (
               <Reveal key={title} delay={index * 120}>
-                <article className="group h-full rounded-[2.5rem] bg-white p-4 shadow-[0_10px_30px_rgba(11,18,32,0.06)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(11,18,32,0.12)]">
+                <article className="group h-full rounded-[2rem] sm:rounded-[2.5rem] bg-white p-4 shadow-[0_10px_30px_rgba(11,18,32,0.06)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(11,18,32,0.12)]">
                   <div className="relative">
-                    <Photo src={u(id, 800)} alt={`${title} education`} className="h-56 rounded-[2rem]" />
+                    <Photo src={u(id, 800)} alt={`${title} education`} className="h-48 sm:h-56 rounded-[1.5rem] sm:rounded-[2rem]" />
                     <span
-                      className="absolute -bottom-5 left-5 grid h-12 w-12 place-items-center rounded-full border-4 border-white text-2xl shadow-sm transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110"
+                      className="absolute -bottom-4 sm:-bottom-5 left-4 sm:left-5 grid h-10 w-10 sm:h-12 sm:w-12 place-items-center rounded-full border-4 border-white text-xl sm:text-2xl shadow-sm transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110"
                       style={{ background: pastel[index] }}
                     >
                       {icon}
                     </span>
                   </div>
-                  <div className="px-3 pb-3 pt-9">
-                    <h3 className={`${H} text-2xl font-semibold text-[#0B1220]`}>{title}</h3>
-                    <p className="mt-2 leading-7">{description}</p>
+                  <div className="px-2 sm:px-3 pb-3 pt-7 sm:pt-9">
+                    <h3 className={`${H} text-xl sm:text-2xl font-semibold text-[#0B1220]`}>{title}</h3>
+                    <p className="mt-2 text-xs sm:text-sm leading-6 sm:leading-7 text-[#475569]">{description}</p>
                   </div>
                 </article>
               </Reveal>
@@ -587,18 +568,19 @@ export default function Home() {
 
       <Wave top="#F8FAFC" color="#E8EEF6" />
 
-      <section id="facilities" className="scroll-mt-28 bg-[#E8EEF6] py-16">
+      {/* Facilities Section */}
+      <section id="facilities" className="scroll-mt-28 bg-[#E8EEF6] py-12 sm:py-16">
         <div className={wrap}>
           <Head title="Our facilities." text="Spaces designed for reading, experimenting, creating and exploring." />
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 sm:mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {facilities.map(([title, id, description], index) => (
               <Reveal key={title} delay={index * 100}>
-                <div className="relative h-80 overflow-hidden rounded-[2rem] shadow-[0_10px_30px_rgba(11,18,32,0.10)]">
+                <div className="relative h-72 sm:h-80 overflow-hidden rounded-[2rem] shadow-[0_10px_30px_rgba(11,18,32,0.10)]">
                   <Photo src={u(id, 700)} alt={title} className="h-full w-full" />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0B1220]/85 via-[#0B1220]/10 to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 p-6 text-white">
-                    <h3 className={`${H} text-xl font-semibold`}>{title}</h3>
-                    <p className="mt-1 text-sm text-white/80">{description}</p>
+                  <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6 text-white">
+                    <h3 className={`${H} text-lg sm:text-xl font-semibold`}>{title}</h3>
+                    <p className="mt-1 text-xs sm:text-sm text-white/80">{description}</p>
                   </div>
                 </div>
               </Reveal>
@@ -609,22 +591,23 @@ export default function Home() {
 
       <Wave top="#E8EEF6" color="#E5E7EB" />
 
-      <section id="classes" className="scroll-mt-28 bg-[#E5E7EB] py-16">
+      {/* Classes / Grades Section */}
+      <section id="classes" className="scroll-mt-28 bg-[#E5E7EB] py-12 sm:py-16">
         <div className={wrap}>
           <Head title="Find your child’s grade." text="Click any grade below to jump straight to its admission application." />
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
+          <div className="mt-8 sm:mt-12 grid gap-6 md:grid-cols-3">
             {stages.map(([icon, stage, items], index) => (
               <Reveal key={stage} delay={index * 120}>
-                <div className={`h-full rounded-[2.5rem] bg-white p-8 ${cardShadow} transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl`}>
-                  <div className="text-4xl">{icon}</div>
-                  <h3 className={`${H} mt-3 text-2xl font-semibold text-[#0B1220]`}>{stage}</h3>
-                  <div className="mt-5 flex flex-wrap gap-3">
+                <div className={`h-full rounded-[2rem] sm:rounded-[2.5rem] bg-white p-6 sm:p-8 ${cardShadow} transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl`}>
+                  <div className="text-3xl sm:text-4xl">{icon}</div>
+                  <h3 className={`${H} mt-3 text-xl sm:text-2xl font-semibold text-[#0B1220]`}>{stage}</h3>
+                  <div className="mt-4 sm:mt-5 flex flex-wrap gap-2.5 sm:gap-3">
                     {items.map((grade) => (
                       <button
                         key={grade}
                         type="button"
                         onClick={() => handleClassClick(grade)}
-                        className="cursor-pointer rounded-full border-2 border-[#E5E7EB] bg-[#F8FAFC] px-4 py-2 font-semibold text-[#0B1220] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#3B82F6] hover:bg-[#DBEAFE]"
+                        className="cursor-pointer rounded-full border-2 border-[#E5E7EB] bg-[#F8FAFC] px-3.5 sm:px-4 py-2 text-xs sm:text-sm font-semibold text-[#0B1220] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#3B82F6] hover:bg-[#DBEAFE]"
                       >
                         {grade} ↗
                       </button>
@@ -639,12 +622,13 @@ export default function Home() {
 
       <Wave top="#E5E7EB" color="#DBEAFE" />
 
-      <section id="gallery" className="scroll-mt-28 bg-[#DBEAFE] py-16">
+      {/* Gallery Section */}
+      <section id="gallery" className="scroll-mt-28 bg-[#DBEAFE] py-12 sm:py-16">
         <div className={wrap}>
           <Head title="A day at Smart School." text="Classrooms, library and playful learning. Click any photo to expand." />
           <Reveal
             delay={150}
-            className="mt-12 grid auto-rows-[150px] grid-cols-2 gap-4 md:auto-rows-[190px] md:grid-cols-4"
+            className="mt-8 sm:mt-12 grid auto-rows-[140px] sm:auto-rows-[190px] grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4"
           >
             {gallery.map(([id, alt, span]) => (
               <Photo
@@ -652,7 +636,7 @@ export default function Home() {
                 src={u(id, 900)}
                 alt={alt}
                 onClick={() => setLightbox({ src: u(id, 1400), alt })}
-                className={`rounded-[2rem] transition-all duration-300 odd:-rotate-1 even:rotate-1 hover:z-10 hover:rotate-0 hover:scale-[1.02] ${frame} ${span}`}
+                className={`rounded-[1.5rem] sm:rounded-[2rem] transition-all duration-300 hover:z-10 hover:scale-[1.02] ${frame} ${span}`}
               />
             ))}
           </Reveal>
@@ -666,16 +650,16 @@ export default function Home() {
         >
           <div
             onClick={(event) => event.stopPropagation()}
-            className="modal-pop relative max-w-3xl overflow-hidden rounded-[2rem] border-4 border-white bg-white shadow-2xl"
+            className="modal-pop relative max-w-3xl w-full overflow-hidden rounded-[2rem] border-4 border-white bg-white shadow-2xl"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={lightbox.src} alt={lightbox.alt} className="max-h-[75vh] w-full object-cover" />
-            <div className="flex items-center justify-between bg-white px-6 py-4">
-              <p className={`${H} font-semibold text-[#0B1220]`}>{lightbox.alt}</p>
+            <img src={lightbox.src} alt={lightbox.alt} className="max-h-[70vh] w-full object-cover" />
+            <div className="flex items-center justify-between bg-white px-5 sm:px-6 py-3.5 sm:py-4">
+              <p className={`${H} text-sm sm:text-base font-semibold text-[#0B1220]`}>{lightbox.alt}</p>
               <button
                 type="button"
                 onClick={() => setLightbox(null)}
-                className="rounded-full bg-[#E8EEF6] px-4 py-1.5 text-sm font-bold text-[#0B1220] transition hover:bg-[#3B82F6] hover:text-white"
+                className="rounded-full bg-[#E8EEF6] px-3.5 sm:px-4 py-1.5 text-xs sm:text-sm font-bold text-[#0B1220] transition hover:bg-[#3B82F6] hover:text-white"
               >
                 Close ✕
               </button>
@@ -686,22 +670,23 @@ export default function Home() {
 
       <Wave top="#DBEAFE" color="#F6F8FB" />
 
-      <section id="teachers" className="scroll-mt-28 py-16">
+      {/* Teachers Section */}
+      <section id="teachers" className="scroll-mt-28 py-12 sm:py-16">
         <div className={wrap}>
           <Head title="Meet our teachers." text="Experienced educators dedicated to student success." />
-          <div className="mt-12 grid gap-10 sm:grid-cols-2 md:grid-cols-3">
+          <div className="mt-8 sm:mt-12 grid gap-8 sm:gap-10 sm:grid-cols-2 md:grid-cols-3">
             {teachers.map(([name, subject, id], index) => (
               <Reveal key={name} delay={index * 120}>
                 <div className="group text-center">
                   <Photo
                     src={u(id, 600)}
                     alt={name}
-                    className="mx-auto h-56 w-56 rounded-full border-[8px] border-white shadow-[0_12px_30px_rgba(11,18,32,0.16)] transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-2xl"
-                    style={{ outline: `8px solid ${pastel[index]}` }}
+                    className="mx-auto h-48 w-48 sm:h-56 sm:w-56 rounded-full border-[6px] sm:border-[8px] border-white shadow-[0_12px_30px_rgba(11,18,32,0.16)] transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-2xl"
+                    style={{ outline: `6px solid ${pastel[index]}` }}
                   />
-                  <h3 className={`${H} mt-6 text-xl font-semibold text-[#0B1220]`}>{name}</h3>
+                  <h3 className={`${H} mt-5 sm:mt-6 text-lg sm:text-xl font-semibold text-[#0B1220]`}>{name}</h3>
                   <p
-                    className="mx-auto mt-2 inline-block rounded-full px-4 py-1 text-sm font-bold text-[#0B1220] transition-transform duration-300 group-hover:scale-105"
+                    className="mx-auto mt-2 inline-block rounded-full px-4 py-1 text-xs sm:text-sm font-bold text-[#0B1220] transition-transform duration-300 group-hover:scale-105"
                     style={{ background: pastel[index] }}
                   >
                     {subject} teacher
@@ -715,8 +700,9 @@ export default function Home() {
 
       <Wave top="#F6F8FB" color="#0B1220" />
 
-      <section id="admissions" className="scroll-mt-28 bg-[#0B1220] py-16">
-        <div className="mx-auto max-w-3xl px-6">
+      {/* Admissions Section */}
+      <section id="admissions" className="scroll-mt-28 bg-[#0B1220] py-12 sm:py-16">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6">
           <Head
             title="Give your child a bright future."
             text="Fill in the form and our office will contact you within two working days."
@@ -724,10 +710,10 @@ export default function Home() {
           />
 
           {admitted ? (
-            <div className="modal-pop mt-10 rounded-[2.5rem] bg-white p-10 text-center shadow-xl">
-              <div className="text-5xl">🎉</div>
-              <h3 className={`${H} mt-3 text-2xl font-semibold text-[#0B1220]`}>Application received</h3>
-              <p className="mt-2">Thank you. We will call you soon to confirm the next steps.</p>
+            <div className="modal-pop mt-8 sm:mt-10 rounded-[2rem] sm:rounded-[2.5rem] bg-white p-6 sm:p-10 text-center shadow-xl">
+              <div className="text-4xl sm:text-5xl">🎉</div>
+              <h3 className={`${H} mt-3 text-xl sm:text-2xl font-semibold text-[#0B1220]`}>Application received</h3>
+              <p className="mt-2 text-sm sm:text-base text-[#475569]">Thank you. We will call you soon to confirm the next steps.</p>
               <button type="button" onClick={() => setAdmitted(false)} className={btnSoft}>
                 Submit another application
               </button>
@@ -738,18 +724,18 @@ export default function Home() {
                 event.preventDefault();
                 setAdmitted(true);
               }}
-              className="mt-10 rounded-[2.5rem] bg-white p-8 shadow-2xl md:p-10"
+              className="mt-8 sm:mt-10 rounded-[2rem] sm:rounded-[2.5rem] bg-white p-6 sm:p-10 shadow-2xl"
             >
-              <h3 className={`${H} mb-6 text-2xl font-semibold text-[#0B1220]`}>Student admission form</h3>
-              <div className="grid gap-6 md:grid-cols-2">
+              <h3 className={`${H} mb-5 sm:mb-6 text-xl sm:text-2xl font-semibold text-[#0B1220]`}>Student admission form</h3>
+              <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
                 {admissionFields.map(([label, type, placeholder]) => (
                   <div key={label}>
-                    <label className="mb-2 block font-bold text-[#0B1220]">{label}</label>
+                    <label className="mb-1.5 sm:mb-2 block text-xs sm:text-sm font-bold text-[#0B1220]">{label}</label>
                     <input type={type} placeholder={placeholder} required className={input} />
                   </div>
                 ))}
                 <div>
-                  <label className="mb-2 block font-bold text-[#0B1220]">Select class</label>
+                  <label className="mb-1.5 sm:mb-2 block text-xs sm:text-sm font-bold text-[#0B1220]">Select class</label>
                   <select
                     required
                     value={selectedClass}
@@ -763,15 +749,15 @@ export default function Home() {
                   </select>
                 </div>
                 <div>
-                  <label className="mb-2 block font-bold text-[#0B1220]">Date of birth</label>
+                  <label className="mb-1.5 sm:mb-2 block text-xs sm:text-sm font-bold text-[#0B1220]">Date of birth</label>
                   <input type="date" required className={input} />
                 </div>
               </div>
-              <div className="mt-6">
-                <label className="mb-2 block font-bold text-[#0B1220]">Home address</label>
+              <div className="mt-4 sm:mt-6">
+                <label className="mb-1.5 sm:mb-2 block text-xs sm:text-sm font-bold text-[#0B1220]">Home address</label>
                 <textarea rows={3} placeholder="Enter your complete address" required className={input} />
               </div>
-              <button type="submit" className={`${btnPrimary} mt-8 w-full`}>
+              <button type="submit" className={`${btnPrimary} mt-6 sm:mt-8 w-full`}>
                 Submit application ✨
               </button>
             </form>
@@ -781,163 +767,84 @@ export default function Home() {
 
       <Wave top="#0B1220" color="#E8EEF6" />
 
-  
-<section id="contact" className="scroll-mt-28 bg-[#E8EEF6] py-16">
-  <div className={wrap}>
-    <Head
-      title="Get in touch."
-      text="Have questions? We would love to hear from you."
-    />
+      {/* Contact Section */}
+      <section id="contact" className="scroll-mt-28 bg-[#E8EEF6] py-12 sm:py-16">
+        <div className={wrap}>
+          <Head
+            title="Get in touch."
+            text="Have questions? We would love to hear from you."
+          />
 
-    <div className="mt-12 grid items-stretch gap-8 lg:grid-cols-2">
-
-      {/* Contact Information */}
-      <Reveal className="flex flex-col justify-between gap-4">
-        {contactInfo.map(([icon, title, detail], index) => (
-          <div
-            key={title}
-            className="flex items-center gap-4 rounded-3xl bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-x-1 hover:shadow-md"
-          >
-            <span
-              className="grid h-12 w-12 shrink-0 place-items-center rounded-full text-xl"
-              style={{ background: pastel[index] }}
-            >
-              {icon}
-            </span>
-            <div>
-              <h3 className={`${H} font-semibold text-[#0B1220]`}>
-                {title}
-              </h3>
-              <p>{detail}</p>
-            </div>
-          </div>
-        ))}
-      </Reveal>
-
-      {/* Compact Contact Form */}
-      <Reveal delay={150}>
-        {messaged ? (
-          <div className="modal-pop grid h-full min-h-[400px] place-items-center rounded-[2rem] bg-white p-8 text-center shadow-md">
-            <div>
-              <div className="text-5xl">💌</div>
-              <h3 className={`${H} mt-3 text-2xl font-semibold text-[#0B1220]`}>
-                Message sent
-              </h3>
-              <p className="mt-2">Thank you. We will reply by email.</p>
-              <button
-                type="button"
-                onClick={() => setMessaged(false)}
-                className={btnSoft}
-              >
-                Send another message
-              </button>
-            </div>
-          </div>
-        ) : (
-          <form
-            onSubmit={(event) => {
-              event.preventDefault();
-              setMessaged(true);
-            }}
-            className="h-full rounded-[2rem] bg-white p-6 shadow-md md:p-7"
-          >
-            <h3 className={`${H} mb-5 text-xl font-semibold text-[#0B1220]`}>
-              Send us a message
-            </h3>
-
-            {[
-              ["Your name", "text"],
-              ["Your email", "email"],
-              ["Subject", "text"],
-            ].map(([label, type]) => (
-              <div key={label} className="mb-3">
-                <label className="mb-1.5 block text-sm font-bold text-[#0B1220]">
-                  {label}
-                </label>
-                <input
-                  type={type}
-                  required
-                  className={`${input} py-2.5`}
-                />
-              </div>
-            ))}
-
-            <div className="mb-4">
-              <label className="mb-1.5 block text-sm font-bold text-[#0B1220]">
-                Message
-              </label>
-              <textarea
-                rows={3}
-                required
-                className={`${input} py-2.5`}
-              />
-            </div>
-
-            <button type="submit" className={`${btnPrimary} w-full py-3`}>
-              Send message
-            </button>
-          </form>
-        )}
-      </Reveal>
-
-    </div>
-  </div>
-</section>
-
-
-      <Wave top="#E8EEF6" color="#0B1220" />
-
-      <footer className="bg-[#0B1220] px-6 pb-8 pt-6 text-[#CBD5E1]">
-        <div className="mx-auto grid max-w-6xl gap-12 sm:grid-cols-2 lg:grid-cols-4">
-          <div>
-            <h2 className={`${H} flex items-center gap-2 text-2xl font-bold text-white`}>🎒 Smart School</h2>
-            <p className="mt-4 leading-7">
-              Building bright futures through quality education, creativity, discipline and innovation.
-            </p>
-            <div className="mt-5 flex gap-5 font-semibold">
-              <a href="https://facebook.com" target="_blank" rel="noreferrer" className="transition hover:text-[#93C5FD]">Facebook</a>
-              <a href="https://instagram.com" target="_blank" rel="noreferrer" className="transition hover:text-[#93C5FD]">Instagram</a>
-            </div>
-          </div>
-
-          <div>
-            <h3 className={`${H} mb-4 text-lg font-semibold text-white`}>Quick links</h3>
-            <ul className="space-y-3">
-              {links.slice(0, 5).map(([label, href]) => (
-                <li key={href}>
-                  <a href={href} className="transition hover:text-[#93C5FD]">{label}</a>
-                </li>
+          <div className="mt-8 sm:mt-12 grid items-stretch gap-6 sm:gap-8 lg:grid-cols-2">
+            <Reveal className="flex flex-col justify-between gap-4">
+              {contactInfo.map(([icon, title, detail], index) => (
+                <div
+                  key={title}
+                  className="flex items-center gap-3.5 sm:gap-4 rounded-2xl sm:rounded-3xl bg-white p-4 sm:p-5 shadow-sm transition-all duration-300 hover:-translate-x-1 hover:shadow-md"
+                >
+                  <span
+                    className="grid h-10 w-10 sm:h-12 sm:w-12 shrink-0 place-items-center rounded-full text-lg sm:text-xl"
+                    style={{ background: pastel[index] }}
+                  >
+                    {icon}
+                  </span>
+                  <div>
+                    <h3 className={`${H} text-sm sm:text-base font-semibold text-[#0B1220]`}>
+                      {title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-[#475569]">{detail}</p>
+                  </div>
+                </div>
               ))}
-            </ul>
-          </div>
+            </Reveal>
 
-          <div>
-            <h3 className={`${H} mb-4 text-lg font-semibold text-white`}>Admissions</h3>
-            <ul className="space-y-3">
-              <li><a href="#admissions" className="transition hover:text-[#93C5FD]">Apply for admission</a></li>
-              <li><a href="#academics" className="transition hover:text-[#93C5FD]">Academic programs</a></li>
-              <li><a href="#classes" className="transition hover:text-[#93C5FD]">Explore classes</a></li>
-              <li><a href="#contact" className="transition hover:text-[#93C5FD]">Ask a question</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className={`${H} mb-4 text-lg font-semibold text-white`}>Contact</h3>
-            <ul className="space-y-3">
-              <li>📍 Main Road, Your City, Pakistan</li>
-              <li>📞 +92 300 0000000</li>
-              <li>✉️ info@smartschool.com</li>
-              <li>🕒 Mon – Fri, 8 AM – 2 PM</li>
-            </ul>
+            <Reveal delay={150}>
+              {messaged ? (
+                <div className="modal-pop h-full rounded-[2rem] sm:rounded-[2.5rem] bg-white p-8 sm:p-10 text-center shadow-xl flex flex-col justify-center items-center">
+                  <div className="text-4xl sm:text-5xl">💌</div>
+                  <h3 className={`${H} mt-3 text-xl sm:text-2xl font-semibold text-[#0B1220]`}>Message sent</h3>
+                  <p className="mt-2 text-xs sm:text-sm text-[#475569]">Thank you for reaching out. We will reply via email shortly.</p>
+                  <button type="button" onClick={() => setMessaged(false)} className={btnSoft}>
+                    Send another message
+                  </button>
+                </div>
+              ) : (
+                <form
+                  onSubmit={(event) => {
+                    event.preventDefault();
+                    setMessaged(true);
+                  }}
+                  className="rounded-[2rem] sm:rounded-[2.5rem] bg-white p-6 sm:p-10 shadow-xl"
+                >
+                  <h3 className={`${H} mb-5 sm:mb-6 text-xl sm:text-2xl font-semibold text-[#0B1220]`}>Send us a message</h3>
+                  <div className="space-y-4">
+                    <div>
+                      <label className="mb-1.5 sm:mb-2 block text-xs sm:text-sm font-bold text-[#0B1220]">Your name</label>
+                      <input type="text" placeholder="Enter your name" required className={input} />
+                    </div>
+                    <div>
+                      <label className="mb-1.5 sm:mb-2 block text-xs sm:text-sm font-bold text-[#0B1220]">Email address</label>
+                      <input type="email" placeholder="Enter your email" required className={input} />
+                    </div>
+                    <div>
+                      <label className="mb-1.5 sm:mb-2 block text-xs sm:text-sm font-bold text-[#0B1220]">Your message</label>
+                      <textarea rows={4} placeholder="How can we help you?" required className={input} />
+                    </div>
+                  </div>
+                  <button type="submit" className={`${btnPrimary} mt-5 sm:mt-6 w-full`}>
+                    Send message 🚀
+                  </button>
+                </form>
+              )}
+            </Reveal>
           </div>
         </div>
+      </section>
 
-        <div className="mx-auto mt-12 flex max-w-6xl flex-col items-center justify-between gap-4 border-t border-white/15 pt-6 text-sm md:flex-row">
-          <p>© 2026 Smart School. All rights reserved.</p>
-          <div className="flex gap-6">
-            <a href="#home" className="transition hover:text-[#93C5FD]">Privacy policy</a>
-            <a href="#home" className="transition hover:text-[#93C5FD]">Terms &amp; conditions</a>
-          </div>
+      {/* Footer */}
+      <footer className="bg-[#0B1220] py-6 sm:py-8 text-center text-xs sm:text-sm text-white/70">
+        <div className={wrap}>
+          <p>© {new Date().getFullYear()} Smart School. All rights reserved.</p>
         </div>
       </footer>
     </main>
